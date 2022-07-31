@@ -1,0 +1,8 @@
+input {
+  height: 34px;
+  width: 150px;
+  background-color: #ccc;
+  border-radius: 34px;
+  margin: 0;
+  padding-left: 10px;
+}

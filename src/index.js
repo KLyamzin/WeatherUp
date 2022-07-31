@@ -1,4 +1,5 @@
 import "./unitslider.css";
+import "./main.css";
 import { apiAddress } from "./api.js";
 import { locationHandler, unitsHandler } from "./handleinput.js";
 
