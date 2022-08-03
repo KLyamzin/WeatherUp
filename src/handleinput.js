@@ -29,7 +29,6 @@ const location = (locationInput) => {
 
 // gets the input from the units toggle switch and returns imperial or metric
 const unitsToggle = (e) => {
-  //   e.stopImmediatePropagation();
   let units = "imperial";
   if (e.target.checked) {
     units = "metric";

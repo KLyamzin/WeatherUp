@@ -3,10 +3,12 @@ import "./main.css";
 import * as handle from "./handleinput.js";
 import * as apiRequest from "./api_requests";
 import { apiAddress } from "./api";
+import * as dom_builder from "./dom_builder";
 
 // Default units
 let units = "imperial";
 let savedLocation;
+let weatherData;
 
 /* Search by input value on form submit */
 const locationInputForm = document.querySelector("[data-location-form]");
@@ -31,12 +33,13 @@ function locationForApi(locationInput) {
 
 // function to call the API methods and return data
 async function resolveWeatherData(location, units) {
-  const coordinates = await apiRequest.initialApiRequest(
+  const report = await apiRequest.initialApiRequest(
     location,
     apiAddress,
     units
   );
-  console.log(coordinates);
+  weatherData = report;
+  console.log(weatherData);
 }
 
 /* Change to units using the toggle*/
@@ -45,5 +48,4 @@ toggleSwitch.addEventListener("change", (e) => {
   e.stopImmediatePropagation();
   units = handle.unitsToggle(e);
   resolveWeatherData(savedLocation, units);
-  //   console.log(units);
 });
