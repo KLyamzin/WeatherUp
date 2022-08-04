@@ -21,14 +21,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  /* background-color: rgba(29, 113, 242, 0.3); */
+  background: transparent;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: "F";
   height: 26px;
   width: 26px;
   left: 4px;
@@ -36,25 +37,32 @@
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  /* background-color: rgba(8, 57, 136, 0.3); */
+  background: transparent;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px rgba(8, 57, 136, 1);
 }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+  content: "C";
 }
 
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
+  border: 1px solid;
+  border-color: rgb(227, 244, 254);
 }
 
 .slider.round:before {

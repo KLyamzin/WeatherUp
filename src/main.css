@@ -1,8 +1,138 @@
-input {
-  height: 34px;
-  width: 150px;
-  background-color: #ccc;
-  border-radius: 34px;
+/* @import url("https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@1,700&family=Dosis:wght@400&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+/* font-family: 'Asap Condensed', sans-serif;
+font-family: 'Dosis', sans-serif;
+font-family: 'Montserrat Alternates', sans-serif; */
+
+html {
+  --color-supernova: rgb(255, 205, 0);
+  --color-gin-fizz: rgb(255, 250, 224);
+  --color-lily-white: rgb(227, 244, 254);
+  --color-dodger-blue2: rgb(25, 195, 251);
+  --color-dodger-blue1: rgb(28, 156, 246);
+  --color-blue-ribbon: rgb(29, 113, 242);
+  --color-blue-transparent3: rgba(227, 244, 254, 0.3);
+  --color-blue-transparent2: rgba(20, 80, 169, 0.302);
+}
+body,
+.container {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  /* width: 100vw; */
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-blue-ribbon);
+  background: linear-gradient(
+    175deg,
+    rgba(29, 113, 242, 1) 19%,
+    rgba(28, 156, 246, 1) 42%,
+    rgba(25, 195, 251, 1) 100%
+  );
+}
+.header {
+  background: var(--color-blue-transparent3);
+  padding: 0 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 20px; */
+  box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
+  -webkit-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
+  -moz-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
+}
+
+.logoContainer {
+  height: 70%;
+}
+
+.logo {
+  font-family: "Asap", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  font-size: 4.5rem;
+  color: #ffff;
+  flex: none;
+  position: absolute;
+  top: 12%;
+  z-index: 11;
+}
+
+.animation {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  top: -9%;
+  left: 50%;
+  z-index: 9;
+}
+
+.inputArea {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+  max-width: 700px;
+  z-index: 11;
+}
+
+.switch {
+  flex: none;
+}
+.slider::before {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+.searchForm {
+  display: flex;
+  min-width: 300px;
+  flex: 2;
+}
+
+.searchBox {
+  height: 40px;
+  background-color: transparent;
+  border-radius: 35px;
   margin: 0;
   padding-left: 10px;
+  border: 1px solid;
+  border-color: var(--color-lily-white);
+  box-shadow: none;
+  font-family: "Dosis", sans-serif;
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  color: var(--color-lily-white);
+  min-width: 200px;
+  flex: 2;
 }
+.searchBox:focus {
+  background-color: transparent;
+  outline: none;
+}
+.searchBox::placeholder {
+  color: var(--color-lily-white);
+}
+.searchBox:focus::placeholder {
+  opacity: 0;
+}
+
+/* @media screen and (max-width: 500px) {
+  .header {
+    flex-direction: column;
+  }
+  .logo {
+    font-size: 2.1rem;
+  }
+} */

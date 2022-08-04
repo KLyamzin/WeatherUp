@@ -28,6 +28,17 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
       },
+      // {
+      //   type: "javascript/auto",
+      //   test: /\.json$/,
+      //   include: /(lottie)/,
+      //   loader: "lottie-web-webpack-loader",
+      //   options: {
+      //     assets: {
+      //       scale: 1, // proportional resizing multiplier
+      //     },
+      //   },
+      // },
     ],
   },
 };

@@ -11,17 +11,41 @@
 </head>
 
 <body>
+  <!-- <div class="animationCover" id="animationCover">
+    <img src="" alt="" class="animationOnLoad" id="animationOnLoad" />
+    <div class="animationBackground" id="animationBackground"></div>
+  </div> -->
+
+  <!-- main body -->
   <div class="container">
-    <img src="" alt="" id="background" />
-    <!-- F to C toggle -->
-    <label class="switch">
-      <input data-unit-toggle type="checkbox" />
-      <span class="slider round"></span>
-    </label>
-    <!-- input form -->
-<form data-location-form action="">
-  <input data-location-input type="text" placeholder="Input City Or Zip Code"></input>
-</form>
+    <div class="header" id="header">
+      <div class="logoContainer">
+        <div class="animation" id="animation"></div>
+        <span class="logo" id="logo">
+          weatherUP
+        </span>
+      </div>
+
+      <div class="inputArea" id="inputArea">
+
+        <!-- input form -->
+        <form data-location-form class="searchForm">
+          <input data-location-input class="searchBox" type="text" placeholder="Input City Or Zip Code"></input>
+        </form>
+
+        <!-- F to C toggle -->
+        <label class="switch">
+          <input data-unit-toggle type="checkbox" />
+          <span class="slider round"> </span>
+        </label>
+
+      </div>
+    </div>
+    <div class="main" id="main">
+
+    </div>
+    <div class="footer" id="footer"></div>
+
   </div>
 </body>
 
