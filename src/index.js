@@ -38,6 +38,7 @@ async function resolveWeatherData(location, units) {
     apiAddress,
     units
   );
+
   weatherData = report;
   dom_builder.passData(weatherData, units);
 }
