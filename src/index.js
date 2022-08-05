@@ -39,8 +39,7 @@ async function resolveWeatherData(location, units) {
     units
   );
   weatherData = report;
-
-  dom_builder.passData(weatherData);
+  dom_builder.passData(weatherData, units);
 }
 
 /* Change to units using the toggle*/

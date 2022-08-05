@@ -130,13 +130,6 @@ body,
 
 .main {
   display: flex;
+  color: #ffff;
+  display: flex;
 }
-
-/* @media screen and (max-width: 500px) {
-  .header {
-    flex-direction: column;
-  }
-  .logo {
-    font-size: 2.1rem;
-  }
-} */
