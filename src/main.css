@@ -133,7 +133,6 @@ body,
 .main {
   display: flex;
   color: #ffff;
-  /* gap: 1em; */
   justify-content: space-around;
 }
 .currentWeather,
@@ -143,6 +142,7 @@ body,
   margin: 1em;
   padding: 4em;
   border-radius: 35px;
+  gap: 1em;
 }
 
 .weather-icon {
@@ -151,29 +151,28 @@ body,
 .temp-icon {
   font-size: 1.8em;
 }
-.temp-m {
+.temp-m,
+#time {
   font-size: 1.5em;
 }
-.m-temps {
+.m-temps,
+.icon-date-time > div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 0.5em;
 }
 .temp {
   font-size: 10em;
 }
-.all-temps {
+.all-temps,
+.icon-date-time {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 .temp-f,
-.description {
+.description,
+#date {
   font-size: 2em;
-}
-.temp-f {
-  /*   position: absolute;
-  width: 200px;
-  top: 50px;
-  left: 10px; */
 }
