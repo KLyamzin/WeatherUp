@@ -1,6 +1,7 @@
 import lottie from "lottie-web";
 import animationData from "./assets/61114-clear-day.json";
 import "./icofont/icofont.min.css";
+
 const mainDiv = document.getElementById("main");
 const currentWeather = Object.assign(document.createElement("div"), {
   classList: "currentWeather",
@@ -50,6 +51,72 @@ class Weather {
     this.unit = unit;
   }
 }
+
+// Returns current date like 'Sunday, August 7'
+const getDate = () => {
+  const date = new Date();
+  const options = {
+    weekday: "long",
+    // year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const todayDate = date.toLocaleDateString("en-US", options);
+  return todayDate;
+};
+
+// Returns current time like '01:44pm'
+const getTime = (data) => {
+  const options = {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  };
+  let time;
+  if (!data) {
+    time = new Date();
+  } else {
+    time = new Date(data * 1000);
+  }
+  const currentTime = time
+    .toLocaleTimeString("en-US", options)
+    .toLowerCase()
+    .split(" ")
+    .join("");
+  return currentTime;
+};
+
+// Converts hPa to inHg
+const pressureUnitType = (data) => {
+  let unitType = (data * 0.02953).toFixed(2);
+  return unitType;
+};
+
+// Converts between "m/s" "mph"
+const speedUnitType = (data) => {
+  let unitType = data === "metric" ? "m/s" : "mph";
+  return unitType;
+};
+
+const getWeatherIcon = (code) => {
+  const icon = {
+    "icofont-sun": "01d",
+    "icofont-night": "01n",
+    "icofont-full-sunny": "02d",
+    "icofont-full-night": "02n",
+    "icofont-clouds": ["03d", "03n"],
+    "icofont-cloudy": ["04d", "04n"],
+    "icofont-rainy": ["09d", "09n"],
+    "icofont-rainy-sunny": "10d",
+    "icofont-rainy-night": "10n",
+    "icofont-rainy-thunder": ["11d", "11n"],
+    "icofont-snow-flake": ["13d", "13n"],
+    "icofont-align-center": ["50d", "50n"],
+  };
+  for (const prop in icon) {
+    if (icon[prop].includes(code)) return prop;
+  }
+};
 
 const displayCurrentWeather = (weatherData) => {
   mainDiv.innerHTML = "";
@@ -101,7 +168,7 @@ const displayCurrentWeather = (weatherData) => {
   });
   const icon = Object.assign(document.createElement("i"), {
     id: "weather-icon",
-    classList: `weather-icon icofont-sun`,
+    classList: `${getWeatherIcon(weatherData.icon)}`,
   });
 
   // div elements
@@ -133,51 +200,6 @@ const displayCurrentWeather = (weatherData) => {
   allTempsDiv.append(mTempsDiv, temp);
   currentWeather.append(iconDateTimeDiv, description, allTempsDiv, feels_like);
   mainDiv.append(currentWeather, currentConditions);
-};
-
-// Returns current date like 'Sunday, August 7'
-const getDate = () => {
-  const date = new Date();
-  const options = {
-    weekday: "long",
-    // year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  const todayDate = date.toLocaleDateString("en-US", options);
-  return todayDate;
-};
-
-// Returns current time like '01:44pm'
-const getTime = (data) => {
-  const options = {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  };
-  let time;
-  if (!data) {
-    time = new Date();
-  } else {
-    time = new Date(data * 1000);
-  }
-  const currentTime = time
-    .toLocaleTimeString("en-US", options)
-    .toLowerCase()
-    .split(" ")
-    .join("");
-  return currentTime;
-};
-
-const pressureUnitType = (data) => {
-  let unitType = (data * 0.02953).toFixed(2);
-  console.log(unitType);
-  return unitType;
-};
-
-const speedUnitType = (data) => {
-  let unitType = data === "metric" ? "m/s" : "mph";
-  return unitType;
 };
 
 const displayCurrentConditions = (weatherData) => {

@@ -141,13 +141,13 @@ body,
   font-family: "Dosis", sans-serif;
   flex: 1;
   margin: 1em;
-  padding: 4em;
-  border-radius: 35px;
+  padding: 2.3em;
+  border-radius: 10px;
   gap: 1em;
   max-width: 410px;
 }
 
-.weather-icon {
+#weather-icon {
   font-size: 8em;
 }
 .temp-icon {
