@@ -263,11 +263,19 @@ const displayCurrentConditions = (weatherData) => {
   currentConditions.append(pressure, humidity, degree, speed, sunrise, sunset);
 };
 
+const displayCityCountry = (data) => {
+  const input = document.querySelector("[data-location-input]");
+  // input.value = "";
+  input.blur();
+  input.value = `${data.name}, ${data.country}`;
+};
+
 const passData = (data, unit) => {
   console.log(data);
   const weatherData = new Weather(data, unit);
   displayCurrentWeather(weatherData);
   displayCurrentConditions(weatherData);
+  displayCityCountry(weatherData);
 };
 
 export { passData };

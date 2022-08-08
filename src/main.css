@@ -44,18 +44,15 @@ body,
 .currentWeather,
 .currentConditions {
   background: var(--color-blue-transparent3);
-  padding: 0 20px 0 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 20px; */
+  /* gap: 0.5em; */
   box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
   -webkit-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
   -moz-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
-}
-
-.logoContainer {
-  height: 70%;
+  z-index: 10;
 }
 
 .logo {
@@ -65,19 +62,18 @@ body,
   -webkit-font-smoothing: antialiased;
   font-size: 4.5rem;
   color: #ffff;
-  flex: none;
-  position: absolute;
-  top: 12%;
   z-index: 11;
+  text-shadow: 5px 5px var(--color-blue-transparent2);
 }
 
 .animation {
-  height: 300px;
-  width: 300px;
-  position: relative;
-  top: -9%;
-  left: 50%;
+  height: 700px;
+  width: 700px;
+  position: fixed;
+  top: -304px;
+  right: -290px;
   z-index: 9;
+  opacity: 0.95;
 }
 
 .inputArea {
@@ -98,13 +94,14 @@ body,
 }
 .searchForm {
   display: flex;
-  min-width: 300px;
+  min-width: 200px;
   flex: 2;
+  margin: 0 10px;
 }
 
 .searchBox {
   height: 40px;
-  background-color: transparent;
+  background-color: var(--color-blue-transparent2);
   border-radius: 35px;
   margin: 0;
   padding-left: 10px;
@@ -145,6 +142,7 @@ body,
   border-radius: 10px;
   gap: 1em;
   max-width: 410px;
+  min-width: 270px;
 }
 
 #weather-icon {
@@ -190,4 +188,18 @@ body,
   display: flex;
   align-items: center;
   gap: 2em;
+}
+@media (max-width: 508px) {
+  .logo {
+    font-size: 3em;
+  }
+  .animation {
+    height: 500px;
+    width: 500px;
+    top: -197px;
+    left: -234px;
+  }
+  .temp {
+    font-size: 8em;
+  }
 }
