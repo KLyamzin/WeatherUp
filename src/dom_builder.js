@@ -53,6 +53,7 @@ class Weather {
 
 const displayCurrentWeather = (weatherData) => {
   mainDiv.innerHTML = "";
+  currentWeather.innerHTML = "";
   const date = Object.assign(document.createElement("span"), {
     id: "date",
     classList: "date",
@@ -148,13 +149,18 @@ const getDate = () => {
 };
 
 // Returns current time like '01:44pm'
-const getTime = () => {
-  const time = new Date();
+const getTime = (data) => {
   const options = {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
   };
+  let time;
+  if (!data) {
+    time = new Date();
+  } else {
+    time = new Date(data * 1000);
+  }
   const currentTime = time
     .toLocaleTimeString("en-US", options)
     .toLowerCase()
@@ -163,7 +169,19 @@ const getTime = () => {
   return currentTime;
 };
 
+const pressureUnitType = (data) => {
+  let unitType = (data * 0.02953).toFixed(2);
+  console.log(unitType);
+  return unitType;
+};
+
+const speedUnitType = (data) => {
+  let unitType = data === "metric" ? "m/s" : "mph";
+  return unitType;
+};
+
 const displayCurrentConditions = (weatherData) => {
+  currentConditions.innerHTML = "";
   // Create the div
   const pressure = document.createElement("div");
   const humidity = document.createElement("div");
@@ -174,7 +192,7 @@ const displayCurrentConditions = (weatherData) => {
 
   // Create the icons
   const pressureIcon = Object.assign(document.createElement("i"), {
-    classList: "icofont-warning-alt",
+    classList: "icofont-speed-meter",
   });
   const humidityIcon = Object.assign(document.createElement("i"), {
     classList: "icofont-water-drop",
@@ -194,22 +212,24 @@ const displayCurrentConditions = (weatherData) => {
 
   // Create the span
   const pressureInfo = Object.assign(document.createElement("span"), {
-    innerText: `Pressure: ${weatherData.pressure}`,
+    innerText: `Pressure: ${pressureUnitType(weatherData.pressure)}inHg`,
   });
   const humidityInfo = Object.assign(document.createElement("span"), {
-    innerText: `Humidity level: ${weatherData.humidity}`,
+    innerText: `Humidity level: ${weatherData.humidity}%`,
   });
   const degreeInfo = Object.assign(document.createElement("span"), {
-    innerText: `Wind degree: ${weatherData.degree}`,
+    innerText: `Wind degree: ${weatherData.degree}°`,
   });
   const speedInfo = Object.assign(document.createElement("span"), {
-    innerText: `Wind speed: ${weatherData.speed}`,
+    innerText: `Wind speed: ${weatherData.speed}${speedUnitType(
+      weatherData.unit
+    )}`,
   });
   const sunriseInfo = Object.assign(document.createElement("span"), {
-    innerText: `Sunrise is at:${weatherData.sunrise}`,
+    innerText: `Sunrise is at: ${getTime(weatherData.sunrise)}`,
   });
   const sunsetInfo = Object.assign(document.createElement("span"), {
-    innerText: `Sunset is at: ${weatherData.sunset}`,
+    innerText: `Sunset is at: ${getTime(weatherData.sunset)}`,
   });
 
   pressure.append(pressureIcon, pressureInfo);
