@@ -133,7 +133,8 @@ body,
 .main {
   display: flex;
   color: #ffff;
-  justify-content: space-around;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .currentWeather,
 .currentConditions {
@@ -143,6 +144,7 @@ body,
   padding: 4em;
   border-radius: 35px;
   gap: 1em;
+  max-width: 410px;
 }
 
 .weather-icon {
@@ -152,7 +154,8 @@ body,
   font-size: 1.8em;
 }
 .temp-m,
-#time {
+#time,
+.currentConditions > div {
   font-size: 1.5em;
 }
 .m-temps,
@@ -175,4 +178,16 @@ body,
 .description,
 #date {
   font-size: 2em;
+}
+
+.currentConditions > div > i {
+  font-size: 2.5em;
+}
+.currentConditions {
+  align-items: flex-start;
+}
+.currentConditions > div {
+  display: flex;
+  align-items: center;
+  gap: 2em;
 }

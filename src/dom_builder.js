@@ -1,6 +1,13 @@
 import lottie from "lottie-web";
 import animationData from "./assets/61114-clear-day.json";
 import "./icofont/icofont.min.css";
+const mainDiv = document.getElementById("main");
+const currentWeather = Object.assign(document.createElement("div"), {
+  classList: "currentWeather",
+});
+const currentConditions = Object.assign(document.createElement("div"), {
+  classList: "currentConditions",
+});
 
 // the sun animation in the header
 const animation = lottie.loadAnimation({
@@ -17,6 +24,7 @@ class Weather {
   constructor(data, unit) {
     ({
       name: this.name,
+      visibility: this.visibility,
       main: {
         temp: this.temp,
         feels_like: this.feels_like,
@@ -32,13 +40,19 @@ class Weather {
           id: this.weather_id,
         },
       },
+      sys: {
+        country: this.country,
+        sunrise: this.sunrise,
+        sunset: this.sunset,
+      },
+      wind: { deg: this.degree, speed: this.speed },
     } = data);
     this.unit = unit;
   }
 }
 
 const displayCurrentWeather = (weatherData) => {
-  const mainDiv = document.getElementById("main");
+  mainDiv.innerHTML = "";
   const date = Object.assign(document.createElement("span"), {
     id: "date",
     classList: "date",
@@ -105,12 +119,7 @@ const displayCurrentWeather = (weatherData) => {
   const minTempDiv = Object.assign(document.createElement("div"), {
     classList: "min-temp",
   });
-  const currentWeather = Object.assign(document.createElement("div"), {
-    classList: "currentWeather",
-  });
-  const currentConditions = Object.assign(document.createElement("div"), {
-    classList: "currentConditions",
-  });
+
   const dateTimeDiv = document.createElement("div");
 
   // Append max and min temps
@@ -154,10 +163,69 @@ const getTime = () => {
   return currentTime;
 };
 
+const displayCurrentConditions = (weatherData) => {
+  // Create the div
+  const pressure = document.createElement("div");
+  const humidity = document.createElement("div");
+  const degree = document.createElement("div");
+  const speed = document.createElement("div");
+  const sunrise = document.createElement("div");
+  const sunset = document.createElement("div");
+
+  // Create the icons
+  const pressureIcon = Object.assign(document.createElement("i"), {
+    classList: "icofont-warning-alt",
+  });
+  const humidityIcon = Object.assign(document.createElement("i"), {
+    classList: "icofont-water-drop",
+  });
+  const degreeIcon = Object.assign(document.createElement("i"), {
+    classList: "icofont-compass",
+  });
+  const speedIcon = Object.assign(document.createElement("i"), {
+    classList: "icofont-wind",
+  });
+  const sunriseIcon = Object.assign(document.createElement("i"), {
+    classList: "icofont-sun-rise",
+  });
+  const sunsetIcon = Object.assign(document.createElement("i"), {
+    classList: "icofont-sun-set",
+  });
+
+  // Create the span
+  const pressureInfo = Object.assign(document.createElement("span"), {
+    innerText: `Pressure: ${weatherData.pressure}`,
+  });
+  const humidityInfo = Object.assign(document.createElement("span"), {
+    innerText: `Humidity level: ${weatherData.humidity}`,
+  });
+  const degreeInfo = Object.assign(document.createElement("span"), {
+    innerText: `Wind degree: ${weatherData.degree}`,
+  });
+  const speedInfo = Object.assign(document.createElement("span"), {
+    innerText: `Wind speed: ${weatherData.speed}`,
+  });
+  const sunriseInfo = Object.assign(document.createElement("span"), {
+    innerText: `Sunrise is at:${weatherData.sunrise}`,
+  });
+  const sunsetInfo = Object.assign(document.createElement("span"), {
+    innerText: `Sunset is at: ${weatherData.sunset}`,
+  });
+
+  pressure.append(pressureIcon, pressureInfo);
+  humidity.append(humidityIcon, humidityInfo);
+  degree.append(degreeIcon, degreeInfo);
+  speed.append(speedIcon, speedInfo);
+  sunrise.append(sunriseIcon, sunriseInfo);
+  sunset.append(sunsetIcon, sunsetInfo);
+  currentConditions.append(pressure, humidity, degree, speed, sunrise, sunset);
+};
+
 const passData = (data, unit) => {
+  console.log(data);
   const weatherData = new Weather(data, unit);
-  // weatherData.displayCurrentWeather();
   displayCurrentWeather(weatherData);
+  displayCurrentConditions(weatherData);
 };
 
 export { passData };
