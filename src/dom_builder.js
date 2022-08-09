@@ -281,7 +281,6 @@ const hideError = () => {
 };
 
 const passData = (data, unit) => {
-  console.log(data);
   const weatherData = new Weather(data, unit);
   displayCurrentWeather(weatherData);
   displayCurrentConditions(weatherData);
