@@ -16,6 +16,7 @@ body,
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+  position: relative;
 }
 .container {
   height: 100vh;
@@ -61,6 +62,7 @@ body,
   -webkit-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
   -moz-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
   z-index: 10;
+  position: relative;
 }
 .logo {
   font-family: "Asap", sans-serif;
@@ -201,24 +203,24 @@ body,
   gap: 2em;
 }
 
-.error-ms {
-  padding: 5px;
+.error-message {
+  display: none;
+  padding: 10px;
+  /* width: 200px; */
+
   font-size: 1.2em;
   font-style: italic;
-  background-color: var(--color-blue-transparent2);
-  color: var(--color-supernova);
-  width: 100%;
+  background-color: #f21d72c3;
+  color: var(--color-lily-white);
+  border-radius: 10px;
   text-align: center;
-  margin-bottom: auto;
-  display: none;
-  /* font-family: "Dosis", sans-serif; */
   font-family: "Asap", sans-serif;
-  /* font-family: "Montserrat Alternates", sans-serif; */
-  box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
-  -webkit-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
-  -moz-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
-  position: fixed;
-  top: -10px;
+  position: absolute;
+  bottom: -17%;
+  left: 0;
+  right: 0;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 @media (max-width: 500px) {

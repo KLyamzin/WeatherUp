@@ -40,6 +40,7 @@ async function resolveWeatherData(location, units) {
       units
     );
     weatherData = report;
+    dom_builder.hideError();
     dom_builder.passData(weatherData, units);
   } catch (err) {
     dom_builder.showError(weatherData);

@@ -20,7 +20,8 @@
       <div class="inputArea" id="inputArea">
         <!-- input form -->
         <form data-location-form class="searchForm">
-          <input data-location-input class="searchBox" type="text" placeholder="Input City Or Zip Code"></input>
+          <input data-location-input id="searchBox" class="searchBox" type="text"
+            placeholder="Input City Or Zip Code"></input>
         </form>
 
         <!-- F to C toggle -->
@@ -28,10 +29,10 @@
           <input data-unit-toggle type="checkbox" />
           <span class="slider round"> </span>
         </label>
+        <div id="error-message" class="error-message"></div>
       </div>
     </div>
     <div class="main" id="main">
-      <div class="error-ms" id="error-ms"></div>
       <div class="onload">
         <p class="welcome">Welcome to </p>
         <span class="logo">weatherUP</span>
