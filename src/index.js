@@ -33,14 +33,17 @@ function locationForApi(locationInput) {
 
 // function to call the API methods and return data
 async function resolveWeatherData(location, units) {
-  const report = await apiRequest.initialApiRequest(
-    location,
-    apiAddress,
-    units
-  );
-
-  weatherData = report;
-  dom_builder.passData(weatherData, units);
+  try {
+    const report = await apiRequest.initialApiRequest(
+      location,
+      apiAddress,
+      units
+    );
+    weatherData = report;
+    dom_builder.passData(weatherData, units);
+  } catch (err) {
+    dom_builder.showError(weatherData);
+  }
 }
 
 /* Change to units using the toggle*/

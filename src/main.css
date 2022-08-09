@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
-/* font-family: 'Asap', sans-serif;
-font-family: 'Dosis', sans-serif;
-font-family: 'Montserrat Alternates', sans-serif; */
-
 html {
   --color-supernova: rgb(255, 205, 0);
   --color-gin-fizz: rgb(255, 250, 224);
@@ -21,16 +17,30 @@ body,
   margin: 0;
   overflow-x: hidden;
 }
-
 .container {
   height: 100vh;
   padding: 0;
   margin: 0;
 }
-
-.container {
+.inputArea,
+.searchForm,
+.main,
+.m-temps,
+.icon-date-time > div,
+.all-temps,
+.icon-date-time,
+.currentConditions > div {
+  display: flex;
+}
+.container,
+.header,
+.currentWeather,
+.currentConditions,
+.onload {
   display: flex;
   flex-direction: column;
+}
+.container {
   justify-content: space-between;
   background: var(--color-blue-ribbon);
   background: linear-gradient(
@@ -42,19 +52,16 @@ body,
 }
 .header,
 .currentWeather,
-.currentConditions {
+.currentConditions,
+.onload {
   background: var(--color-blue-transparent3);
   padding: 20px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  /* gap: 0.5em; */
   box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
   -webkit-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
   -moz-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
   z-index: 10;
 }
-
 .logo {
   font-family: "Asap", sans-serif;
   font-style: italic;
@@ -65,7 +72,6 @@ body,
   z-index: 11;
   text-shadow: 5px 5px var(--color-blue-transparent2);
 }
-
 .animation {
   height: 700px;
   width: 700px;
@@ -75,9 +81,7 @@ body,
   z-index: 9;
   opacity: 0.95;
 }
-
 .inputArea {
-  display: flex;
   flex-wrap: nowrap;
   align-items: center;
   gap: 10px;
@@ -85,7 +89,6 @@ body,
   max-width: 700px;
   z-index: 11;
 }
-
 .switch {
   flex: none;
 }
@@ -93,12 +96,10 @@ body,
   font-family: "Montserrat Alternates", sans-serif;
 }
 .searchForm {
-  display: flex;
   min-width: 200px;
   flex: 2;
   margin: 0 10px;
 }
-
 .searchBox {
   height: 40px;
   background-color: var(--color-blue-transparent2);
@@ -126,15 +127,14 @@ body,
 .searchBox:focus::placeholder {
   opacity: 0;
 }
-
 .main {
-  display: flex;
   color: #ffff;
   justify-content: center;
   flex-wrap: wrap;
 }
 .currentWeather,
-.currentConditions {
+.currentConditions,
+.onload {
   font-family: "Dosis", sans-serif;
   flex: 1;
   margin: 1em;
@@ -143,6 +143,20 @@ body,
   gap: 1em;
   max-width: 410px;
   min-width: 270px;
+  letter-spacing: 0.05em;
+}
+.onload {
+  justify-self: flex-start;
+  padding: 2.3em;
+  margin: 0.8em;
+  gap: 0;
+  text-align: center;
+}
+.onload * {
+  margin: 0;
+}
+.onload .logo {
+  font-size: 3rem;
 }
 
 #weather-icon {
@@ -158,7 +172,6 @@ body,
 }
 .m-temps,
 .icon-date-time > div {
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 0.5em;
@@ -168,16 +181,15 @@ body,
 }
 .all-temps,
 .icon-date-time {
-  display: flex;
   align-items: center;
   gap: 1em;
 }
 .temp-f,
 .description,
-#date {
+#date,
+.onload {
   font-size: 2em;
 }
-
 .currentConditions > div > i {
   font-size: 2.5em;
 }
@@ -185,11 +197,31 @@ body,
   align-items: flex-start;
 }
 .currentConditions > div {
-  display: flex;
   align-items: center;
   gap: 2em;
 }
-@media (max-width: 508px) {
+
+.error-ms {
+  padding: 5px;
+  font-size: 1.2em;
+  font-style: italic;
+  background-color: var(--color-blue-transparent2);
+  color: var(--color-supernova);
+  width: 100%;
+  text-align: center;
+  margin-bottom: auto;
+  display: none;
+  /* font-family: "Dosis", sans-serif; */
+  font-family: "Asap", sans-serif;
+  /* font-family: "Montserrat Alternates", sans-serif; */
+  box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
+  -webkit-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
+  -moz-box-shadow: 5px 5px 5px 5px var(--color-blue-transparent2);
+  position: fixed;
+  top: -10px;
+}
+
+@media (max-width: 500px) {
   .logo {
     font-size: 3em;
   }
@@ -201,5 +233,11 @@ body,
   }
   .temp {
     font-size: 8em;
+  }
+  .onload .logo {
+    font-size: 3rem;
+  }
+  .onload {
+    padding: 1.3em;
   }
 }

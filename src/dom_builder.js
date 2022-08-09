@@ -9,6 +9,7 @@ const currentWeather = Object.assign(document.createElement("div"), {
 const currentConditions = Object.assign(document.createElement("div"), {
   classList: "currentConditions",
 });
+const errorPara = document.getElementById("error-ms");
 
 // the sun animation in the header
 const animation = lottie.loadAnimation({
@@ -18,7 +19,7 @@ const animation = lottie.loadAnimation({
   loop: true,
   animationData,
 });
-animation.setSpeed(0.5);
+animation.setSpeed(0.2);
 animation.goToAndPlay(0, true);
 
 class Weather {
@@ -269,6 +270,11 @@ const displayCityCountry = (data) => {
   input.blur();
   input.value = `${data.name}, ${data.country}`;
 };
+const showError = (err) => {
+  let errorText = `whoops... ${err.message.toLowerCase()}`;
+  errorPara.innerText = errorText;
+  errorPara.style.display = "block";
+};
 
 const passData = (data, unit) => {
   console.log(data);
@@ -278,4 +284,4 @@ const passData = (data, unit) => {
   displayCityCountry(weatherData);
 };
 
-export { passData };
+export { passData, showError };
