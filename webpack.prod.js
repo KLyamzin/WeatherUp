@@ -8,7 +8,9 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = merge(common, {
   mode: "production",
   devtool: "source-map",
-  plugins: [new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" })],
+  plugins: [
+    new MiniCssExtractPlugin({ filename: "css/[name].[contenthash].css" }),
+  ],
   optimization: {
     minimizer: [
       new CssMinimizerPlugin(),
@@ -30,6 +32,7 @@ module.exports = merge(common, {
         test: /\.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
+          // "style-loader",
           "css-loader",
           "postcss-loader",
           "sass-loader",
